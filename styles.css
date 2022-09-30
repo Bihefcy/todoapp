@@ -453,24 +453,31 @@ form .content .body .color-dropdown select option  {
 /*for the drop-down section*/
 .red {
     background-color: var(--red-header);
+    color: var(--red-header);
 }
 .green {
     background-color: var(--green-header);
+    color: var(--green-header);
 }
 .yellow {
     background-color: var(--yellow-header);
+    color: var(--yellow-header);
 }
 .blue {
     background-color: var(--blue-header);
+    color: var(--blue-header);
 }
 .orange {
     background-color: var(--orange-header);
+    color: var(--orange-header);
 }
 .indigo {
     background-color: var(--indigo-header);
+    color: var(--indigo-header);
 }
 .violet {
     background-color: var(--violet-header);
+    color: var(--violet-header);
 }
 /*for the drop-down section*/
 
