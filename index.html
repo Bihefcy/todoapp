@@ -6,61 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO app</title>
     <link rel="stylesheet" href="styles.css">
-    <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-  crossorigin="anonymous"
-/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-  crossorigin="anonymous"
-></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="app">
-        <h4 class="mb-3">TODO app</h4>
-
-        <div id="addNew" data-bs-toggle="modal" data-bs-target="#form">
-            <span>Add New Task</span>
-            <i class="fas fa-plus"></i>
+<body class="" id="body">
+  <div class="overlay show" id="overlay"></div>
+  <div class="color-mode" id="color-mode">
+    <div class="white">Light</div>
+    <div class="black">Dark</div>
+    <div class="toggle" id="toggle"></div>
+    
+  </div>
+  <div class="container-container" id="container">
+    <div class="container">
+      <div class="header">
+        <h1>TODO APP</h1>
+  
+        <div class="add-new" id="add-form">
+          <h2>Add new task</h2>
+          <span><img src="img/bx-plus.svg"></span>
         </div>
-
-        <h5 class="text-center my-3">Tasks</h5>
-        <div id="tasks"></div>
     </div>
+  
+    <div class="tasks" id="tasks">
+    </div>
+    </div>
+  </div>
+  
+    
+
 
     <!--Modal-->
     <form
-  class="modal fade"
   id="form"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
+  class="no-show"
 >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+
+    <div class="content">
+      <div class="header">
+        <h5 class="title" id="title">Add New</h5>
       </div>
-      <div class="modal-body">
-        <p>Task Title</p>
+      <div class="body">
+        <label for="textInput">TITLE</label>
         <input type="text" class="form-control" name="" id="textInput" />
         <div id="msg"></div>
         <br />
-        <p>Due Date</p>
+        <label for="dateInput">DATE</label>
         <input type="date" class="form-control" name="" id="dateInput" />
         <br />
-        <p>Description</p>
+        <label for="textrea">DESCRIPTION</label>
         <textarea
           name=""
           class="form-control"
@@ -68,15 +66,39 @@
           cols="30"
           rows="5"
         ></textarea>
+
+
+
+
+
+        <div  class="color-dropdown">
+        <label for="bcg-color">COLOR</label>
+        <select id="bcg-color">
+            <option class="white"></option>
+            <option class="red" value="red"> </option>
+            <option class="orange" value="orange"></option>
+            <option class="yellow" value="yellow"></option>
+            <option class="green" value="green"></option>
+            <option class="blue" value="blue"></option>
+            <option class="indigo" value="indigo"></option>
+            <option class="violet" value="violet"></option>
+        </select>
+          
+          
+        </div>
+
+
+
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button type="button" class="close btn red" id="close" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="submit" id="add" class="btn btn-primary">Add</button>
+        <button type="submit" id="add" class="add btn green">Add</button>
       </div>
     </div>
-  </div>
+
 </form>
     <script src="app.js"></script>
 </body>
