@@ -1,63 +1,535 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color-light-overlay: #ffffff83;
+    --bg-color-light: #ffffff;
+    --bg-color-dark: #262626;
+    --bg-color-dark-overlay: #262626c0;
+    --font-color-light: #3333333;
+    --font-color-dark: #f2f2f2;
+
+    --red-header: #ff9999;
+    --red-body: #ffcccc;
+
+    --orange-header: #ffd280;
+    --orange-body: #ffe4b3;
+
+    --yellow-header: #ffff80;
+    --yellow-body: #ffffcc;
+
+    --green-header: #80ff80;
+    --green-body: #ccffcc;
+
+    --blue-header: #80ffff;
+    --blue-body: #ccffff;
+
+    --indigo-header: #ca80ff;
+    --indigo-body: #eaccff;
+
+    --violet-header: #f3a5f3;
+    --violet-body: #fce9fc;
+
+
+
+}
+
+html {
+    padding: 0;
+    margin: 0;
+}
 body {
-    font-family: sans-serif;
-    margin: 0 50px;
-    background-color: #e5e5e5;
-    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    
+    
+}
+.overlay {
+    position: absolute;
+    z-index: 80;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color-light-overlay);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+
+.dark-mode {
+    background-color: var(--bg-color-dark);
+}
+.dark-mode-text {
+    color: var(--bg-color-light);
+}
+
+
+.color-mode {
+    width: 120px;
+    height: 35px;
+    background-color: grey;
+    display: flex;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    border-radius: 15px;
+}
+.color-mode .white {
+    width: 50%;
+    height: 100%;
+    color: var(--bg-color-dark);
+    background-color: var(--bg-color-light);
+    padding: 8px;
+}
+.color-mode .black {
+    width: 50%;
+    height: 100%;
+    background-color: var(--bg-color-dark);
+    color: var(--bg-color-light);
+    padding: 8px;
+}
+.color-mode .toggle {
+    position: absolute;
+    display: block;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    background-color: white;
+}
+.shift {
+    left: 50%;
+}
+
+.show {
+    display: none;
+}
+#body-toggle {
+    display: none;
+}
+/* container container section starts */
+.container-container {
+    width: 80%;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+} 
+@media (max-width: 420px) {
+    .container-container {
+        width: 90%;
+    }
+}
+@media (min-width:421px) and (max-width: 768px) {
+    .container-container {
+        width: 75%;
+    }
 }
 
-.app {
-    background-color: #fff;
-    width: 300px;
-    height: 500px;
-    border: 5px solid #abcea1;
+
+/* container container section ends */
+
+
+/* container section starts */
+.container {
+    height: 70vh;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px 10px;
+}
+
+
+.container > .header {
+    width: 100%;
+    text-align: center;
+}
+
+.container > .header h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.container > .header h2 {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.container > .header .add-new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #d8d8d8;
     border-radius: 8px;
-    padding: 15px;
+    margin: auto;
+    color: var(--bg-color-dark);
+}
+@media (max-width:420px) {
+    .container > .header .add-new{
+        padding: 4px 8px;
+    }
+    
+}
+@media (min-width:421px) and (max-width:768px) {
+    .container > .header .add-new{
+        padding: 4px 12px;
+        width: 50%;
+    }
+    
+}
+@media (min-width:769px) {
+    .container > .header .add-new{
+        padding: 8px 16px;
+        width: 60%;
+    }
+    .container > .header .add-new:hover {
+        background-color: #828282;
+        color: #dddddd;
+    }
+    
 }
 
-#addNew {
+
+/* container section ends */
+
+
+/* tasks section begins */
+.tasks {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    overflow-y: scroll;
+    height: 80%;
+    scroll-snap-type: y mandatory;
+}
+
+@media (max-width: 420px) {
+    .tasks {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+@media (min-width:421px) and (max-width: 768px) {
+    .tasks {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 15px;
+    }
+}
+
+
+
+/* tasks section ends */
+
+
+/* tasks header section begins */
+.tasks-card .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(171, 206, 161, 0.35);
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    border-radius: 5px 5px 0px 0px;
+    padding: 6px 16px;
+    color: var(--bg-color-dark);
+    
+}
+@media (max-width: 420px) {
+    .tasks-card .header {
+        width: auto;
+    }
+}
+@media (min-width: 421px) and (max-width:768px) {
+    .tasks-card .header {
+        width: auto;
+    }
+}
+@media (min-width: 768px) {
+    .tasks-card .header {
+        width: auto;
+    }
+}
+.tasks-card .header h3 {
+    font-size: 0.8rem;
+    
+}
 
-  .fa-plus {
-    background-color: #abcea1;
-    padding: 3px;
-    border-radius: 3px;
-  }
-  #msg {
-    color: red;
-  }
+.tasks-card .header span {
+    font-size: 0.5rem;
+    
+}
 
-  #tasks {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  
-  #tasks div {
-    border: 3px solid #abcea1;
-    background-color: #e2eede;
-    border-radius: 6px;
-    padding: 5px;
-    display: grid;
-    gap: 4px;
-  }
+.edit-mobile {
+    display: none;
+}
 
-  #tasks div .options {
-    justify-self: center;
+.delete-mobile {
+    display: none;
+}
+
+.header-mobile {
+    display: none;
+}
+
+@media (max-width: 420px) {
+    .edit-desktab {
+        display: none;
+    }
+
+    .delete-desktab {
+        display: none;
+    }
+
+    .edit-mobile {
+        display: block;
+    }
+    
+    .delete-mobile {
+        display: block;
+    }
+
+    .header-mobile {
+        display: block;
+    }
+
+    .header-desktab {
+        display: none;
+    }
+}
+
+/* tasks header section */
+
+
+/* tasks card body section begins */
+.tasks-card .body {
+    border-radius: 0px 0px 5px 5px;
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+    color: var(--bg-color-dark);
+}
+
+@media (min-width:769px) {
+    .tasks-card .body {
+        padding: 8px 12px;
+        height: auto;
+    }
+}
+@media (min-width:421px) and (max-width: 768px) {
+    .tasks-card .body {
+        padding: 8px 12px;
+        height: auto;
+    }
+}
+@media (max-width:420px) {
+    .tasks-card .body {
+        padding: 0px;
+        height: 0px;
+    }
+
+    .tasks-card #body-toggle:checked ~ .body  {
+        padding: 8px 12px;
+        height: auto;
+    }
+}
+
+.tasks-card .body .title h3 {
+    font-size: 0.7rem;
+}
+
+.tasks-card .body .description h5 {
+    font-size: 0.6rem;
+    color: #2626267b;
+    margin-block: 0.5em;
+}
+
+.tasks-card .body .description p {
+    font-size: 0.6rem;
+    margin-block-start: 0;
+    margin-block-end: 1.5em;
+    
+}
+
+.tasks-card .body .date h4 {
+    font-size: 0.6rem;
+}
+/* tasks card body section ends*/
+
+
+
+
+
+
+
+
+
+/* form  */
+ form {
+    position: absolute;
+    z-index: 100;
+    color: #ffffff;
+    text-align: start;
+    padding: 20px 20px;
+    border-radius: 10px;
+    width: 100%;
+    top: 30%;
+ }
+
+ .no-show {
+    display: none;
+ }
+
+ form .content {
+    background-color: var(--bg-color-white);
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--bg-color-dark);
+    box-shadow: 1px 1px 1px #2626264f;
+ }
+ @media (min-width:769px) {
+ form .content {
+    width: 50%;
+ }
+ }
+
+ @media (min-width:421px) and  (max-width:768px) {
+    form .content {
+        width: 60%;
+    }
+    }
+
+@media (max-width:420px) {
+        form .content {
+            width: 80%;
+        }
+}
+
+form .content .header {
+    width: 100%;
+    text-align: center;
     display: flex;
-    gap: 20px;
-  }
-  
-  #tasks div .options i {
-    cursor: pointer;
-  }
+    justify-content: space-between;
+    align-items: center;
+}
+
+form .content .body input[type="text"] {
+    margin-inline-start: 10px;
+    margin-block-end: 10px;
+    width: 50%;
+}
+
+form .content .body input[type="date"] {
+    margin-inline-start: 10px;
+    margin-block-end: 20px;
+}
+
+form .content .body .msg {
+    margin-inline-start: 10px;
+    color: var(--red-header);
+    font-size: 0.7rem;
+}
+
+form .content .body textarea {
+    margin-block-start: 10px;
+    width: 100%;
+}
+
+form .content .body .color-dropdown select  {
+    margin-inline-start: 10px;
+}
+form .content .body .color-dropdown{
+    margin-block: 20px;
+}
+
+form .content .body .color-dropdown select option  {
+    height: 10px;
+    width: 10px;
+}
+
+/*for the drop-down section*/
+.red {
+    background-color: var(--red-header);
+}
+.green {
+    background-color: var(--green-header);
+}
+.yellow {
+    background-color: var(--yellow-header);
+}
+.blue {
+    background-color: var(--blue-header);
+}
+.orange {
+    background-color: var(--orange-header);
+}
+.indigo {
+    background-color: var(--indigo-header);
+}
+.violet {
+    background-color: var(--violet-header);
+}
+/*for the drop-down section*/
+
+
+/*for the header section*/
+.red-header {
+    background-color: var(--red-header);
+}
+.green-header {
+    background-color: var(--green-header);
+}
+.yellow-header {
+    background-color: var(--yellow-header);
+}
+.blue-header {
+    background-color: var(--blue-header);
+}
+.orange-header {
+    background-color: var(--orange-header);
+}
+.indigo-header {
+    background-color: var(--indigo-header);
+}
+.violet-header {
+    background-color: var(--violet-header);
+}
+/*for the header section*/
+
+
+/*for the header section*/
+.red-body {
+    background-color: var(--red-body);
+}
+.green-body {
+    background-color: var(--green-body);
+}
+.yellow-body {
+    background-color: var(--yellow-body);
+}
+.blue-body {
+    background-color: var(--blue-body);
+}
+.orange-body {
+    background-color: var(--orange-body);
+}
+.indigo-body {
+    background-color: var(--indigo-body);
+}
+.violet-body {
+    background-color: var(--violet-body);
+}
+
+.btn {
+    padding-inline: 10px;
+    padding-block: 10px;
+    border-radius: 6px;
+    border: none;
+    color: black;
+}
+
+
+/* form  */
